@@ -1,11 +1,11 @@
-import { CowsayContainer } from "@styles/cowsay";
+import { Box, Text } from "@chakra-ui/react";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { createRef, useEffect } from "react";
 
 const COWSAY = `
  ____________________________________
 / this site is very cool, would come \\
-\\ again                             /
+\\ again                              /
  ------------------------------------
         \\   ^__^
          \\  (oo)\\_______
@@ -15,7 +15,7 @@ const COWSAY = `
 `;
 
 export const Cowsay: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement | null>();
+  const containerRef = createRef<HTMLDivElement>();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -33,15 +33,15 @@ export const Cowsay: React.FC = () => {
   }, [containerRef]);
 
   return (
-    <CowsayContainer ref={(el) => (containerRef.current = el)}>
+    <Box ref={containerRef} mt="4rem">
       {COWSAY.split("\n").map((content, i) => (
-        <p
+        <Text
           key={i}
           dangerouslySetInnerHTML={{
             __html: content.replaceAll(" ", "&nbsp;"),
           }}
         />
       ))}
-    </CowsayContainer>
+    </Box>
   );
 };

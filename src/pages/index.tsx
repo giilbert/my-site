@@ -1,28 +1,29 @@
+import { Box, Center, Heading, Text } from "@chakra-ui/react";
 import { Cowsay } from "@components/cowsay";
-import { Main, PageWrapper } from "@styles/index-page";
 import { withMountOnFirstView } from "@utils/withMountOnFirstView";
 import type { NextPage } from "next";
-import { GlobalStyles } from "styles/global";
-import { WindupChildren } from "windups";
+import { Pause, WindupChildren } from "windups";
 
 const Windup = withMountOnFirstView(WindupChildren);
 
 const Home: NextPage = () => {
   return (
-    <PageWrapper>
-      <GlobalStyles />
-      <Main>
+    <Center>
+      <Box w="700px" m="2rem">
         <Windup>
-          <h1>Hello, I&apos;m Gilbert</h1>
-          <p>
+          <Heading>Hello, I&apos;m Gilbert</Heading>
+          <Pause ms={800} />
+          <Text mt="2rem">
             This site is just a placeholder until I set up a CMS and a bunch of
-            other things :)
-          </p>
+            other things <Pause ms={200} /> :<Pause ms={200} />)
+          </Text>
+
+          <Pause ms={500} />
 
           <Cowsay />
         </Windup>
-      </Main>
-    </PageWrapper>
+      </Box>
+    </Center>
   );
 };
 
