@@ -1,0 +1,18 @@
+import { Box, Heading } from "@chakra-ui/react";
+import { IProject } from "queries";
+import { ProjectCard } from "./project-card";
+import { WindupOnView } from "./windup-on-view";
+
+export const Projects: React.FC<{ projects: IProject[] }> = ({ projects }) => {
+  console.log(projects);
+  return (
+    <Box>
+      <WindupOnView height="100px">
+        <Heading mb="4">My Projects</Heading>
+      </WindupOnView>
+      {projects.map((project) => (
+        <ProjectCard project={project} key={project.id} />
+      ))}
+    </Box>
+  );
+};
