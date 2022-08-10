@@ -1,30 +1,43 @@
 import { Box, Center, Heading, Text } from "@chakra-ui/react";
-import { Cowsay } from "@components/cowsay";
 import { withMountOnFirstView } from "@utils/withMountOnFirstView";
-import type { NextPage } from "next";
+import { gql } from "graphql-request";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import { client, HomePageQuery } from "queries";
 import { Pause, WindupChildren } from "windups";
 
 const Windup = withMountOnFirstView(WindupChildren);
 
-const Home: NextPage = () => {
+const Home: NextPage<PageQuery> = ({ heroTitle, heroDescription }) => {
   return (
     <Center>
-      <Box w="700px" m="2rem">
+      <Box w="700px" m="4rem">
         <Windup>
-          <Heading>Hello, I&apos;m Gilbert</Heading>
+          <Heading>{heroTitle}</Heading>
           <Pause ms={800} />
-          <Text mt="2rem">
-            This site is just a placeholder until I set up a CMS and a bunch of
-            other things <Pause ms={200} /> :<Pause ms={200} />)
-          </Text>
-
-          <Pause ms={500} />
-
-          <Cowsay />
+          <Text mt="2rem">{heroDescription}</Text>
         </Windup>
+        <span>asd</span>
       </Box>
     </Center>
   );
+};
+
+type PageQuery = InferGetStaticPropsType<typeof getStaticProps>;
+export const getStaticProps: GetStaticProps<
+  HomePageQuery["homePage"]
+> = async () => {
+  const data = await client.request<HomePageQuery>(gql`
+    query HomePageQuery {
+      homePage(where: { id: "cl6mu7k6321qp0ditbczcwpp1" }) {
+        heroTitle
+        heroDescription
+      }
+    }
+  `);
+
+  return {
+    props: data.homePage,
+  };
 };
 
 export default Home;
