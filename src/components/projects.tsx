@@ -4,7 +4,6 @@ import { ProjectCard } from "./project-card";
 import { WindupOnView } from "./windup-on-view";
 
 export const Projects: React.FC<{ projects: IProject[] }> = ({ projects }) => {
-  console.log(projects);
   return (
     <Box>
       <WindupOnView height="100px">
