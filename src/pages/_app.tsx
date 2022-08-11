@@ -10,6 +10,12 @@ const theme = extendTheme({
         fontFamily: "Roboto Mono",
       },
     },
+    Link: {
+      baseStyle: {
+        color: "#efefef",
+        fontFamily: "Roboto Mono",
+      },
+    },
     Heading: {
       baseStyle: {
         color: "#efefef",

@@ -1,16 +1,18 @@
 import { Box, Center } from "@chakra-ui/react";
+import { Footer } from "@components/footer";
 import { Hero } from "@components/hero";
 import { Projects } from "@components/projects";
 import { gql } from "graphql-request";
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { client, IHomePageQuery } from "queries";
 
-const Home: NextPage<PageQuery> = ({ hero, projects }) => {
+const Home: NextPage<PageQuery> = ({ hero, projects, footer }) => {
   return (
     <Center>
-      <Box w="700px" m="4rem">
+      <Box w="700px" my="8" mx="8">
         <Hero hero={hero} />
         <Projects projects={projects} />
+        <Footer footer={footer} />
       </Box>
     </Center>
   );
@@ -35,6 +37,17 @@ export const getStaticProps: GetStaticProps<
           image {
             url
             alt
+          }
+        }
+        footer {
+          email
+          socialLinks {
+            name
+            link
+            image {
+              url
+              alt
+            }
           }
         }
       }

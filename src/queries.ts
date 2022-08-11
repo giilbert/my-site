@@ -14,6 +14,17 @@ export interface IHero {
   description: string;
 }
 
+export interface ISocialLink {
+  name: string;
+  link: string;
+  image: IImage;
+}
+
+export interface IFooter {
+  email: string;
+  socialLinks: ISocialLink[];
+}
+
 export interface IProject {
   id: string;
   name: string;
@@ -26,5 +37,6 @@ export interface IHomePageQuery {
   homePage: {
     hero: IHero;
     projects: IProject[];
+    footer: IFooter;
   };
 }
