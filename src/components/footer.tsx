@@ -1,25 +1,8 @@
-import {
-  Box,
-  BoxProps,
-  HStack,
-  Image,
-  Link,
-  StackProps,
-  Text,
-} from "@chakra-ui/react";
+import { Box, BoxProps, HStack, Image, Link, Text } from "@chakra-ui/react";
 import { motion, useAnimation, Variants } from "framer-motion";
 import { IFooter } from "queries";
 import { Pause } from "windups";
 import { WindupOnView } from "./windup-on-view";
-
-const containerVariants: Variants = {
-  hidden: {
-    opacity: 0,
-  },
-  shown: {
-    opacity: 1,
-  },
-};
 
 const socialLinkVariants: Variants = {
   hidden: {
@@ -33,7 +16,6 @@ const socialLinkVariants: Variants = {
 };
 
 const MBox = motion<BoxProps>(Box);
-const MHStack = motion<StackProps>(HStack);
 
 export const Footer: React.FC<{ footer: IFooter }> = ({ footer }) => {
   const animation = useAnimation();
@@ -46,7 +28,7 @@ export const Footer: React.FC<{ footer: IFooter }> = ({ footer }) => {
           animation.start("shown");
         }}
       >
-        <Text color="green.300">Contact me!</Text>
+        <Text color="green.300">Get in touch!</Text>
         <Link
           href={`mailto:${footer.email}`}
           textDecoration="underline"
@@ -63,12 +45,15 @@ export const Footer: React.FC<{ footer: IFooter }> = ({ footer }) => {
               initial="hidden"
               animate="shown"
             >
-              <Image
-                src={link.image.url}
-                alt={link.image.alt}
-                width="8"
-                height="8"
-              />
+              <Link href={link.link} isExternal>
+                <Image
+                  src={link.image.url}
+                  alt={link.image.alt}
+                  width="8"
+                  height="8"
+                />
+              </Link>
+
               <Pause ms={200} />
             </MBox>
           ))}
