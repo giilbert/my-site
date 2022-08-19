@@ -22,6 +22,8 @@ export const Footer: React.FC<{ footer: IFooter }> = ({ footer }) => {
 
   return (
     <>
+      {/* this is here to make the scrollTo work, everything else wont be rendered initially */}
+      <Box id="get-in-touch" />
       <WindupOnView
         height="60vh"
         onFinished={() => {

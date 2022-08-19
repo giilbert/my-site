@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, HStack, Text } from "@chakra-ui/react";
 import { useGsapTween } from "hooks/useGsapTween";
 import { useIsUserAgentMobile } from "hooks/useIsUserAgentMobile";
 import { IHero } from "queries";
@@ -27,6 +27,26 @@ export const Hero: React.FC<{ hero: IHero }> = ({ hero }) => {
         <Pause ms={800} />
         <Text mt="2rem">{description}</Text>
       </WindupOnView>
+
+      <HStack justifyContent="right">
+        <Text
+          lineHeight="1.1"
+          fontSize={["2xl", "4xl"]}
+          mt="24"
+          color="#bbb"
+          w="min-content"
+        >
+          \&nbsp;&nbsp;&nbsp;^__^
+          <br />
+          &nbsp;\&nbsp; (oo)\_______
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;(__)\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)\/\
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||----w |<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||
+          <br />
+        </Text>
+      </HStack>
     </Box>
   );
 };
