@@ -21,7 +21,7 @@ export const Hero: React.FC<{ hero: IHero }> = ({ hero }) => {
   const { title, description } = hero;
 
   return (
-    <Box h="100vh" ref={ref} mt="4">
+    <Box h="100vh" ref={ref} mt="4" mb="64">
       <WindupOnView height="100px">
         <Heading>{title}</Heading>
         <Pause ms={800} />

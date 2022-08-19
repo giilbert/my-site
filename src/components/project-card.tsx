@@ -24,7 +24,7 @@ export const ProjectCard: React.FC<{
   }));
 
   return (
-    <Box ref={ref} opacity="0" my="8">
+    <Box ref={ref} opacity="0" my="16">
       <Image src={image.url} alt={image.alt} mb="4" w="100%" />
 
       <Heading>{name}</Heading>

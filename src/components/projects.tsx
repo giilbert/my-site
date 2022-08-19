@@ -9,6 +9,7 @@ export const Projects: React.FC<{ projects: IProject[] }> = ({ projects }) => {
       <WindupOnView height="100px">
         <Heading mb="4">Featured Projects</Heading>
       </WindupOnView>
+
       {projects.map((project) => (
         <ProjectCard project={project} key={project.id} />
       ))}
