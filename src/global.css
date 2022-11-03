@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #111;
+}
+
+#__next * {
+  color: #eee;
+}
+
+p {
+  font-size: 1.1rem;
+}
