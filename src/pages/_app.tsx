@@ -1,11 +1,6 @@
-import type { AppProps } from "next/app";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import "../globals.css";
 import "@fontsource/inter";
-import "@fontsource/rubik";
-import "../global.css";
-
-gsap.registerPlugin(ScrollTrigger);
+import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;

@@ -1,41 +1,36 @@
-import { Layout } from "@/components/layout";
+import { Ashes } from "@/components/ashes";
+import { Boot } from "@/components/boot";
 import { NextPage } from "next";
-import { createRef, useLayoutEffect } from "react";
-import { gsap } from "gsap";
 
 const IndexPage: NextPage = () => {
-  const ref = createRef<HTMLParagraphElement>();
-  useLayoutEffect(() => {
-    if (!ref.current) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ref.current,
-        {
-          y: -500,
-        },
-        {
-          y: 0,
-          scrollTrigger: {
-            scrub: 1,
-          },
-        }
-      );
-    }, ref.current);
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
-
   return (
-    <Layout title="Gilbert Zhang">
-      <h1 className="font-bold mt-2 text-5xl">Hey, I&apos;m Gilbert</h1>
+    <>
+      <Ashes />
+      <div className="flex justify-center mx-4 items-center h-screen">
+        <main className="text-center w-[52rem] flex justify-center flex-col">
+          <div className="flex justify-center">
+            <h1 className="text-4xl sm:text-7xl md:text-8xl font-extrabold mb-4 whitespace-pre">
+              Hello, I&apos;m Gilbert.
+            </h1>
 
-      <div className="my-[64rem]" />
-      <p ref={ref}>Hello world!</p>
-      <div className="my-[64rem]" />
-    </Layout>
+            <div className="animate-blink ml-2 bg-neutral-600 w-3 md:w-96 h-[2.5rem] sm:h-[3.75rem] md:h-[6rem]" />
+          </div>
+
+          <hr className="border-neutral-700 my-8" />
+
+          <p className="text-xl text-gray-400">
+            [Insert some long profound text here]
+          </p>
+
+          <div className="flex gap-8 mt-8 w-full justify-center flex-wrap">
+            <p className="text-blue-400 text-xl">About Me</p>
+            <p className="text-blue-400 text-xl">Socials</p>
+            <p className="text-blue-400 text-xl">Projects</p>
+            <p className="text-blue-400 text-xl">Blog</p>
+          </div>
+        </main>
+      </div>
+    </>
   );
 };
 
