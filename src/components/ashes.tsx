@@ -1,4 +1,4 @@
-import { createRef, useEffect } from "react";
+import { createRef, memo, useEffect } from "react";
 
 const clearCanvas = (ctx: CanvasRenderingContext2D) => {
   ctx.fillStyle = "#111111";
@@ -52,7 +52,7 @@ class Particle {
   }
 }
 
-export const Ashes: React.FC = () => {
+export const Ashes = memo(() => {
   const canvasRef = createRef<HTMLCanvasElement>();
 
   useEffect(() => {
@@ -87,4 +87,4 @@ export const Ashes: React.FC = () => {
       Enable canvas!
     </canvas>
   );
-};
+});
