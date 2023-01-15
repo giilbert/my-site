@@ -5,6 +5,13 @@ const clearCanvas = (ctx: CanvasRenderingContext2D) => {
   ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 };
 
+const generateSize = () => {
+  const size = Math.random() * 200;
+  const clamped = size < 100 ? 100 : size;
+
+  return clamped;
+};
+
 class Particle {
   private x: number = Math.random() * window.innerWidth;
   private y: number = Math.random() * window.innerHeight;
@@ -16,9 +23,7 @@ class Particle {
   constructor() {
     this.vx = Math.random() - 0.5;
     this.vy = Math.random() - 0.5;
-
-    const size = Math.random() * 40;
-    this.size = size < 20 ? 20 : size;
+    this.size = generateSize();
   }
 
   update() {
@@ -37,14 +42,12 @@ class Particle {
 
       this.vx = Math.random() - 0.5;
       this.vy = Math.random() - 0.5;
-
-      const size = Math.random() * 40;
-      this.size = size < 20 ? 20 : size;
+      this.size = generateSize();
     }
   }
 
   draw(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "#2222222f";
+    ctx.fillStyle = "#3333333f";
     ctx.fillRect(this.x, this.y, this.size, this.size);
   }
 }
@@ -63,7 +66,7 @@ export const Ashes: React.FC = () => {
     if (!ctx) return;
 
     const particles: Particle[] = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 20; i++) {
       particles.push(new Particle());
     }
 
