@@ -52,7 +52,7 @@ class Particle {
   }
 }
 
-export const Ashes = memo(() => {
+const AshesNoMemo: React.FC = () => {
   const canvasRef = createRef<HTMLCanvasElement>();
 
   useEffect(() => {
@@ -87,4 +87,7 @@ export const Ashes = memo(() => {
       Enable canvas!
     </canvas>
   );
-});
+};
+
+export const Ashes = memo(AshesNoMemo);
+Ashes.displayName = "Ashes";
