@@ -12,6 +12,12 @@ const generateSize = () => {
   return clamped;
 };
 
+const generateSpeed = () => {
+  const vx = Math.random() - 0.5;
+  const vy = Math.random() + 0.8;
+  return { vx, vy };
+};
+
 class Particle {
   private x: number = Math.random() * window.innerWidth;
   private y: number = Math.random() * window.innerHeight;
@@ -21,8 +27,9 @@ class Particle {
   private vy: number;
 
   constructor() {
-    this.vx = Math.random() - 0.5;
-    this.vy = Math.random() - 0.5;
+    const { vx, vy } = generateSpeed();
+    this.vx = vx;
+    this.vy = vy;
     this.size = generateSize();
   }
 
@@ -38,16 +45,18 @@ class Particle {
     ) {
       // reset particle
       this.x = Math.random() * window.innerWidth;
-      this.y = Math.random() * window.innerHeight;
+      this.y = -100;
 
-      this.vx = Math.random() - 0.5;
-      this.vy = Math.random() - 0.5;
+      const { vx, vy } = generateSpeed();
+      this.vx = vx;
+      this.vy = vy;
       this.size = generateSize();
     }
   }
 
   draw(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "#3333333f";
+    ctx.fillStyle = "#2222221f";
+    // ctx.fillStyle = "#22222233";
     ctx.fillRect(this.x, this.y, this.size, this.size);
   }
 }
@@ -66,7 +75,7 @@ const AshesNoMemo: React.FC = () => {
     if (!ctx) return;
 
     const particles: Particle[] = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < window.innerWidth / 20; i++) {
       particles.push(new Particle());
     }
 
