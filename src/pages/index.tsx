@@ -1,18 +1,28 @@
-import { Ashes } from "@/components/ashes";
+import { Layout } from "@/components/layout";
 import { Links } from "@/components/links";
 import clsx from "clsx";
 import { NextPage } from "next";
 import { useWindupString } from "windups";
+import { motion, useAnimationControls } from "framer-motion";
+import { useCallback } from "react";
 
 const IndexPage: NextPage = () => {
-  const [hi, hiControl] = useWindupString("Hello, I'm Gilbert.");
+  const controls = useAnimationControls();
+  const onFinished = useCallback(() => {
+    controls.start({
+      opacity: 1,
+      y: 0,
+    });
+  }, [controls]);
+  const [hi, hiControl] = useWindupString("Hello, I'm Gilbert.", {
+    onFinished,
+  });
 
   return (
-    <>
-      <Ashes />
-      <div className="flex justify-center mx-4 items-center h-screen">
+    <Layout>
+      <div className="flex justify-center px-4 items-center h-screen w-screen fixed top-0 left-0">
         <main className="text-center w-[52rem] flex justify-center flex-col">
-          <div className="flex justify-center">
+          <div className="flex justify-center h-16 sm:h-24">
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 whitespace-pre">
               {hi}
             </h1>
@@ -25,16 +35,24 @@ const IndexPage: NextPage = () => {
             />
           </div>
 
-          <hr className="border-neutral-700 my-8 mx-[10%] sm:mx-8" />
+          <motion.div
+            animate={controls}
+            initial={{
+              opacity: 0,
+              y: 50,
+            }}
+          >
+            <hr className="border-neutral-700 mt-2 mb-8 mx-8" />
 
-          <p className="text-lg md:text-xl text-gray-400 italic">
-            iter aeternum glacies crepito
-          </p>
+            <p className="text-lg md:text-xl text-gray-400 italic mb-6">
+              iter aeternum glacies crepito
+            </p>
 
-          <Links />
+            <Links />
+          </motion.div>
         </main>
       </div>
-    </>
+    </Layout>
   );
 };
 

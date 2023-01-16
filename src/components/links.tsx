@@ -1,13 +1,15 @@
+import clsx from "clsx";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const links = [
   {
-    text: "About Me",
-    to: "/about",
+    text: "Home",
+    to: "/",
   },
   {
-    text: "Socials",
-    to: "/socials",
+    text: "About Me",
+    to: "/about",
   },
   {
     text: "Projects",
@@ -20,13 +22,18 @@ const links = [
 ] as const;
 
 export const Links: React.FC = () => {
+  const router = useRouter();
+
   return (
-    <div className="flex gap-8 mt-8 w-full justify-center flex-wrap text-lg">
+    <div className="flex gap-8 w-full justify-center flex-wrap text-lg">
       {links.map((link, i) => (
         <Link
           key={i}
           href={link.to}
-          className="text-blue-400 transform hover:scale-105 hover:underline transition-all cursor-pointer"
+          className={clsx(
+            "text-xl text-blue-400 transition-all",
+            router.pathname === link.to ? "underline" : "hover:underline"
+          )}
         >
           {link.text}
         </Link>
