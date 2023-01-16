@@ -11,14 +11,14 @@ export const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       {router.pathname === "/" && <Ashes />}
 
       {router.pathname !== "/" && (
-        <div className="w-96 rounded px-2 py-1 fixed left-1/2 top-4 -translate-x-1/2">
+        <div className="rounded px-4 py-2 fixed left-1/2 top-4 -translate-x-1/2 bg-neutral-900 z-40">
           <Links />
         </div>
       )}
 
       <div className="flex justify-center pt-16">
         <motion.main
-          className="w-[48rem]"
+          className="w-[48rem] mx-4 mt-2 mb-16"
           initial={{
             opacity: 0,
           }}
