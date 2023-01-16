@@ -9,7 +9,7 @@ const links = [
     to: "/",
   },
   {
-    text: "About Me",
+    text: "About",
     to: "/about",
   },
   {
@@ -26,13 +26,13 @@ export const Links: React.FC = () => {
   const router = useRouter();
 
   return (
-    <div className="flex gap-8 w-full justify-center flex-wrap text-lg">
+    <div className="flex gap-8 w-full justify-center text-lg">
       {links.map((link, i) => (
         <Link
           key={i}
           href={link.to}
           className={clsx(
-            "text-xl text-blue-400 transition-all",
+            "text-lg md:text-xl text-blue-400 transition-all",
             router.pathname === link.to ? "underline" : "hover:underline"
           )}
         >

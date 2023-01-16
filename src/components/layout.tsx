@@ -16,7 +16,7 @@ export const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
         </div>
       )}
 
-      <div className="flex justify-center pt-16">
+      <div className="flex justify-center pt-20">
         <motion.main
           className="w-[48rem] mx-4 mt-2 mb-16"
           initial={{
