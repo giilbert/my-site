@@ -14,6 +14,7 @@ const IndexPage: NextPage = () => {
       y: 0,
     });
   }, [controls]);
+
   const [hi, hiControl] = useWindupString("Hello, I'm Gilbert.", {
     onFinished,
   });
@@ -23,9 +24,14 @@ const IndexPage: NextPage = () => {
       <div className="flex justify-center px-4 items-center h-screen w-screen fixed top-0 left-0">
         <main className="text-center w-[52rem] flex justify-center flex-col">
           <div className="flex justify-center h-16 sm:h-24">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 whitespace-pre">
+            <motion.h1
+              className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 whitespace-pre"
+              exit={{
+                y: 30,
+              }}
+            >
               {hi}
-            </h1>
+            </motion.h1>
 
             <div
               className={clsx(
@@ -37,6 +43,9 @@ const IndexPage: NextPage = () => {
 
           <motion.div
             animate={controls}
+            exit={{
+              y: 50,
+            }}
             initial={{
               opacity: 0,
               y: 50,
