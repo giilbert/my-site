@@ -10,3 +10,7 @@ body {
 * {
   color: #dddddd;
 }
+
+hr {
+  @apply border-neutral-800 my-2;
+}

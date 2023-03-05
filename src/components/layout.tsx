@@ -76,7 +76,7 @@ export const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
 
       <div className="flex justify-center pt-20">
         <motion.main
-          className="w-[56rem] mx-4 mt-2 mb-16"
+          className="w-[50rem] mx-4 mt-2 mb-16"
           initial={
             router.pathname !== "/"
               ? {

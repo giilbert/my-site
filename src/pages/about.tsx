@@ -5,7 +5,7 @@ const AboutPage: NextPage = () => {
   return (
     <Layout>
       <h1 className="text-4xl font-bold mb-8">About Me</h1>
-      <p className="text-xl leading-8">
+      <p className="text-lg leading-8">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec
         elementum purus. Nullam neque eros, gravida vel egestas nec, iaculis et
         felis. Morbi in mauris imperdiet, malesuada neque vel, aliquam felis.
