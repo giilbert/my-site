@@ -11,14 +11,12 @@ export const BASE_REGEX = /^\/([^/]+)(\/|$)/;
 export default function App({ Component, pageProps, router }: AppProps) {
   const previousPath = useRef<{
     previousPath: string;
-    currentPath: string;
   }>();
 
   useEffect(() => {
-    const changePreviousPath = (currentPath: string) => {
+    const changePreviousPath = () => {
       previousPath.current = {
         previousPath: router.pathname,
-        currentPath,
       };
     };
 

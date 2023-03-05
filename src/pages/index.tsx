@@ -54,7 +54,7 @@ const IndexPage: NextPage = () => {
             <hr className="border-neutral-700 mt-2 mb-8 mx-8" />
 
             <p className="text-lg md:text-xl text-gray-400 italic mb-6">
-              iter aeternum glacies crepito
+              some profound text
             </p>
 
             <Links />

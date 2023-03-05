@@ -1,12 +1,10 @@
 import { BASE_REGEX } from "@/pages/_app";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useMemo } from "react";
 import { Links } from "./links";
 import { PreviousPath } from "./previous-path";
 
-// matches the first segment of the url
-// e.g. /blog/2021/01/01/first-post -> blog
 const ORDER: Record<string, number> = {
   "": 0,
   about: 1,
@@ -26,12 +24,9 @@ const EXIT = {
   center: 0,
 } as const;
 
-export const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
-  const router = useRouter();
-  const pathData = useContext(PreviousPath);
-
-  const previousUrl = pathData?.previousPath;
-  const nextUrl = pathData?.currentPath || router.pathname;
+const calculateExitAndEnter = (previousPath: string, currentPath: string) => {
+  const previousUrl = previousPath;
+  const nextUrl = currentPath;
 
   const previous = BASE_REGEX.exec(previousUrl || "-")?.at(1) || "";
   const next = BASE_REGEX.exec(nextUrl)?.at(1) || "";
@@ -48,8 +43,28 @@ export const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     return "left";
   })();
 
+  const isFromHome = previousPath === "/";
+
+  if (isFromHome)
+    return {
+      xEnter: 0,
+      xExit: 0,
+    };
+
   const xEnter = ENTER[direction];
   const xExit = EXIT[direction];
+
+  return { xEnter, xExit };
+};
+
+export const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+  const router = useRouter();
+  const pathData = useContext(PreviousPath);
+
+  const { xEnter, xExit } = useMemo(
+    () => calculateExitAndEnter(pathData?.previousPath || "", router.pathname),
+    [router.pathname, pathData?.previousPath]
+  );
 
   return (
     <>
@@ -66,7 +81,7 @@ export const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
             router.pathname !== "/"
               ? {
                   opacity: 0,
-                  x: previousUrl !== "/" ? xEnter : undefined,
+                  x: xEnter,
                 }
               : undefined
           }
@@ -76,7 +91,7 @@ export const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
           }}
           exit={{
             opacity: 0,
-            x: previousUrl !== "/" ? xExit : undefined,
+            x: xExit,
           }}
           transition={{
             duration: 0.25,
