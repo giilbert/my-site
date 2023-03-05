@@ -33,7 +33,10 @@ const IndexPage: NextPage = () => {
               {hi}
             </motion.h1>
 
-            <div
+            <motion.div
+              exit={{
+                y: 30,
+              }}
               className={clsx(
                 "ml-2 bg-neutral-600 w-3 md:w-4 h-[2.5rem] sm:h-[3.75rem] md:h-[4.5rem]",
                 hiControl.isFinished && "animate-blink"
