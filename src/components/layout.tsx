@@ -69,7 +69,7 @@ export const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   return (
     <>
       {router.pathname !== "/" && (
-        <div className="rounded px-4 py-2 fixed left-1/2 top-4 -translate-x-1/2 bg-neutral-900 z-40">
+        <div className="rounded px-6 py-2 fixed left-1/2 top-4 -translate-x-1/2 bg-neutral-900/50 z-40">
           <Links />
         </div>
       )}
