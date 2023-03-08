@@ -6,7 +6,7 @@ import { NextPage } from "next";
 const ProjectsPage: NextPage = () => {
   return (
     <Layout>
-      <h1 className="text-4xl font-bold mb-8">Stuff I Made</h1>
+      <h1 className="text-5xl font-bold mb-8">Stuff I Made</h1>
 
       <motion.div
         className="grid-cols-1 grid sm:grid-cols-2 gap-2"

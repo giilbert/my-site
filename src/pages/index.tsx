@@ -25,7 +25,7 @@ const IndexPage: NextPage = () => {
         <main className="text-center w-[52rem] flex justify-center flex-col">
           <div className="flex justify-center h-16 sm:h-24">
             <motion.h1
-              className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 whitespace-pre"
+              className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4 whitespace-pre"
               exit={{
                 y: 30,
               }}
@@ -54,7 +54,7 @@ const IndexPage: NextPage = () => {
               y: 50,
             }}
           >
-            <hr className="border-neutral-700 mt-2 mb-8 mx-8" />
+            <hr className="border-neutral-700 -mt-2 md:mt-4 mb-4 md:mb-8 mx-8" />
 
             <p className="text-lg md:text-xl text-gray-400 italic mb-6">
               some profound text

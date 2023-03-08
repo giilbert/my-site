@@ -1,4 +1,5 @@
-import { BASE_REGEX } from "@/pages/_app";
+import { BASE_REGEX, inter } from "@/pages/_app";
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useContext, useMemo } from "react";
@@ -69,12 +70,22 @@ export const Layout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   return (
     <>
       {router.pathname !== "/" && (
-        <div className="rounded px-6 py-2 fixed left-1/2 top-4 -translate-x-1/2 bg-neutral-900/50 z-40">
+        <div
+          className={clsx(
+            "rounded-md px-6 py-2 fixed left-1/2 top-4 -translate-x-1/2 bg-neutral-800/70 z-40 font-sans",
+            inter.variable
+          )}
+        >
           <Links />
         </div>
       )}
 
-      <div className="flex justify-center pt-20">
+      <div
+        className={clsx(
+          "flex justify-center pt-20 font-sans w-screen h-screen overflow-x-hidden",
+          inter.variable
+        )}
+      >
         <motion.main
           className="w-[50rem] mx-4 mt-2 mb-16"
           initial={

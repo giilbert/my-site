@@ -5,6 +5,13 @@ import { AnimatePresence } from "framer-motion";
 import { Ashes } from "@/components/ashes";
 import { useEffect, useRef } from "react";
 import { PreviousPath } from "@/components/previous-path";
+import { Inter } from "next/font/google";
+import clsx from "clsx";
+
+export const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const BASE_REGEX = /^\/([^/]+)(\/|$)/;
 
@@ -23,7 +30,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
     router.events.on("beforeHistoryChange", changePreviousPath);
 
     return () => {
-      console.log("app unmount");
       router.events.off("beforeHistoryChange", changePreviousPath);
     };
   }, [router]);
@@ -33,7 +39,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
       <Ashes />
 
       <PreviousPath.Provider value={previousPath.current || null}>
-        <AnimatePresence mode="wait" initial={true}>
+        <AnimatePresence mode="wait" initial={false}>
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>
       </PreviousPath.Provider>
