@@ -14,7 +14,7 @@ export default function Home() {
       <hr className="my-6" />
 
       <section className="mb-4">
-        <div className="flex flex-wrap justify-between gap-2">
+        <div className="flex flex-col md:flex-row justify-between gap-1">
           <div>
             <h2 className="text-xl font-medium">Projects</h2>
             <p className="text-muted-foreground">
@@ -24,10 +24,10 @@ export default function Home() {
 
           <Link
             href="/projects"
-            className="md:ml-auto text-muted-foreground hover:text-foreground transition-colors"
+            className="sm:ml-auto text-muted-foreground hover:text-foreground transition-colors"
           >
             <ChevronRightIcon
-              className="inline-block sm:hidden mr-2"
+              className="inline-block sm:hidden mr-1"
               size={18}
             />
             View all projects
@@ -76,7 +76,7 @@ export default function Home() {
       <hr className="my-6" />
 
       <section className="mb-4">
-        <div className="flex flex-wrap justify-between gap-2">
+        <div className="flex flex-col md:flex-row justify-between gap-1">
           <div>
             <h2 className="text-xl font-medium">Blog</h2>
             <p className="text-muted-foreground">Stuff on my mind</p>
@@ -84,10 +84,10 @@ export default function Home() {
 
           <Link
             href="/blog"
-            className="md:ml-auto text-muted-foreground hover:text-foreground transition-colors"
+            className="sm:ml-auto text-muted-foreground hover:text-foreground transition-colors"
           >
             <ChevronRightIcon
-              className="inline-block sm:hidden mr-2"
+              className="inline-block sm:hidden mr-1"
               size={18}
             />
             View all posts
