@@ -24,13 +24,13 @@ export default function Home() {
 
           <Link
             href="/projects"
-            className="sm:ml-auto text-muted-foreground hover:text-foreground transition-colors"
+            className="sm:ml-auto text-muted-foreground hover:text-foreground transition-colors underline"
           >
             <ChevronRightIcon
               className="inline-block sm:hidden mr-1"
               size={18}
             />
-            View all projects
+            View all
           </Link>
         </div>
 
@@ -84,13 +84,13 @@ export default function Home() {
 
           <Link
             href="/blog"
-            className="sm:ml-auto text-muted-foreground hover:text-foreground transition-colors"
+            className="sm:ml-auto text-muted-foreground hover:text-foreground transition-colors underline"
           >
             <ChevronRightIcon
               className="inline-block sm:hidden mr-1"
               size={18}
             />
-            View all posts
+            View all
           </Link>
         </div>
 

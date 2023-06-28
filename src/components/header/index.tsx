@@ -16,7 +16,9 @@ export const Header: React.FC = () => {
         <div className="flex gap-3 items-center text-muted-foreground">
           <a
             href="mailto:example.com"
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
           >
             mail@example.com
           </a>
