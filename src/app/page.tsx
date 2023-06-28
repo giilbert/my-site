@@ -13,7 +13,7 @@ export default function Home() {
 
       <hr className="my-6" />
 
-      <section>
+      <section className="mb-4">
         <div className="flex flex-wrap justify-between gap-2">
           <div>
             <h2 className="text-xl font-medium">Projects</h2>
@@ -26,7 +26,10 @@ export default function Home() {
             href="/projects"
             className="md:ml-auto text-muted-foreground hover:text-foreground transition-colors"
           >
-            <ChevronRightIcon className="inline-block sm:hidden" size={18} />
+            <ChevronRightIcon
+              className="inline-block sm:hidden mr-2"
+              size={18}
+            />
             View all projects
           </Link>
         </div>
@@ -53,6 +56,64 @@ export default function Home() {
                 </p>
               </div>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+          </Link>
+
+          <Link href="/projects/c" className="w-full">
+            <div className="py-3 px-4 border rounded-md w-full hover:bg-slate-800/10 transition-colors">
+              <div>
+                <h3 className="text-lg font-medium">Project C</h3>
+                <p className="text-muted-foreground">
+                  Technology 1, Technology 2, Technology 3
+                </p>
+              </div>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      <hr className="my-6" />
+
+      <section className="mb-4">
+        <div className="flex flex-wrap justify-between gap-2">
+          <div>
+            <h2 className="text-xl font-medium">Blog</h2>
+            <p className="text-muted-foreground">Stuff on my mind</p>
+          </div>
+
+          <Link
+            href="/blog"
+            className="md:ml-auto text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ChevronRightIcon
+              className="inline-block sm:hidden mr-2"
+              size={18}
+            />
+            View all posts
+          </Link>
+        </div>
+
+        <div className="flex gap-2 mt-4 flex-col">
+          <Link href="/blog/blog-post-a">
+            <div className="py-3 px-4 border rounded-md w-full hover:bg-slate-800/10 transition-colors">
+              <div className="flex gap-2 items-center">
+                <h3 className="text-lg font-medium">Blog Post A</h3>
+                <p className="text-muted-foreground">10/10/2021 · 5 min read</p>
+              </div>
+
+              <p>Description of post yatta yatta...</p>
+            </div>
+          </Link>
+
+          <Link href="/blog/blog-post-a">
+            <div className="py-3 px-4 border rounded-md w-full hover:bg-slate-800/10 transition-colors">
+              <div className="flex gap-2 items-center">
+                <h3 className="text-lg font-medium">Blog Post B</h3>
+                <p className="text-muted-foreground">13/10/2021 · 9 min read</p>
+              </div>
+
+              <p>Description of post yatta yatta...</p>
             </div>
           </Link>
         </div>
