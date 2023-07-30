@@ -1,11 +1,11 @@
-import { getAllPosts, getComponent } from "@/lib/blog";
+import { getAllPosts, getPost } from "@/lib/blog";
 
 export default async function BlogPostPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const { Component } = await getComponent(params.slug);
+  const { Component } = await getPost(params.slug);
 
   return <Component />;
 }

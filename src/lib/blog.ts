@@ -9,7 +9,7 @@ export const blogPostMetaSchema = z.object({
 
 export type BlogPostMeta = z.infer<typeof blogPostMetaSchema>;
 
-export const getComponent = async (slug: string) => {
+export const getPost = async (slug: string) => {
   const exported = await import(`../../content/blog/${slug}.mdx`);
   const meta = blogPostMetaSchema.parse(exported.meta);
 
@@ -25,7 +25,7 @@ export const getComponent = async (slug: string) => {
 export const getAllPosts = async () => {
   const slugs = await readdir("./content/blog");
   const posts = await Promise.all(
-    slugs.map((slug) => getComponent(slug.replace(".mdx", "")))
+    slugs.map((slug) => getPost(slug.replace(".mdx", "")))
   );
   return posts;
 };
