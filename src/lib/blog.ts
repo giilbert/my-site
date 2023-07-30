@@ -5,9 +5,13 @@ export const blogPostMetaSchema = z.object({
   title: z.string(),
   description: z.string(),
   tags: z.array(z.string()).default([]),
+  written: z.string().transform((s) => new Date(s)),
+  readTime: z.string(),
 });
 
-export type BlogPostMeta = z.infer<typeof blogPostMetaSchema>;
+export interface BlogPostMeta extends z.infer<typeof blogPostMetaSchema> {
+  slug: string;
+}
 
 export const getPost = async (slug: string) => {
   const exported = await import(`../../content/blog/${slug}.mdx`);

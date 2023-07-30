@@ -1,7 +1,11 @@
+import { BlogPostCard } from "@/components/blog-post-card";
+import { getAllPosts } from "@/lib/blog";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getAllPosts();
+
   return (
     <>
       <p className="mt-2 text-lg leading-7">
@@ -95,27 +99,9 @@ export default function Home() {
         </div>
 
         <div className="flex gap-2 mt-4 flex-col">
-          <Link href="/blog/blog-post-a">
-            <div className="py-3 px-4 border rounded-md w-full hover:bg-slate-800/10 transition-colors">
-              <div className="flex gap-2 items-center">
-                <h3 className="text-lg font-medium">Blog Post A</h3>
-                <p className="text-muted-foreground">10/10/2021 · 5 min read</p>
-              </div>
-
-              <p>Description of post yatta yatta...</p>
-            </div>
-          </Link>
-
-          <Link href="/blog/blog-post-a">
-            <div className="py-3 px-4 border rounded-md w-full hover:bg-slate-800/10 transition-colors">
-              <div className="flex gap-2 items-center">
-                <h3 className="text-lg font-medium">Blog Post B</h3>
-                <p className="text-muted-foreground">13/10/2021 · 9 min read</p>
-              </div>
-
-              <p>Description of post yatta yatta...</p>
-            </div>
-          </Link>
+          {posts.slice(0, 3).map((post) => (
+            <BlogPostCard meta={post.meta} key={post.meta.slug} />
+          ))}
         </div>
       </section>
     </>
