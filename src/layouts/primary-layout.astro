@@ -1,0 +1,22 @@
+---
+import "@/styles/global.css";
+import "@fontsource-variable/inter";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import Header from "@/components/header.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{SITE_TITLE}</title>
+    <meta name="description" content={SITE_DESCRIPTION} />
+  </head>
+  <body class="dark flex justify-center">
+    <main class="w-[52rem] mx-6 my-10">
+      <Header />
+      <slot />
+    </main>
+  </body>
+</html>

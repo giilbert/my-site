@@ -1,0 +1,43 @@
+<div class="flex gap-1">
+  <h1 id="name" class="font-medium text-2xl"></h1>
+  <div id="cursor" class="h-[1.8rem] mt-1 w-2.5 bg-white/80"></div>
+</div>
+
+<script>
+  const nameElement = document.getElementById("name")!;
+  const cursorElement = document.getElementById("cursor")!;
+
+  function randomRange(min: number, max: number) {
+    return Math.random() * (max - min) + min;
+  }
+
+  async function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function run() {
+    // type "Glibe"
+    const textOne = "Glibe";
+    for (let i = 0; i < textOne.length; i++) {
+      nameElement.innerText = textOne.slice(0, i + 1);
+      await sleep(randomRange(50, 100));
+    }
+
+    // remove 4 letters
+    for (let i = 0; i < 4; i++) {
+      nameElement.innerText = nameElement.innerText.slice(0, -1);
+      await sleep(randomRange(50, 100));
+    }
+
+    // type "ilbert Zhang"
+    const textTwo = "ilbert Zhang";
+    for (let i = 0; i < textTwo.length; i++) {
+      nameElement.innerText += textTwo[i].replace(" ", "\u00a0");
+      await sleep(randomRange(50, 100));
+    }
+
+    cursorElement.classList.add("animate-blink");
+  }
+
+  run();
+</script>
