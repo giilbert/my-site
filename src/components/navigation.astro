@@ -1,0 +1,34 @@
+---
+const links = [
+  {
+    name: "Home",
+    matcher: (url: string) => url === "/",
+  },
+  {
+    name: "Projects",
+    matcher: (url: string) => url.startsWith("/projects"),
+  },
+  {
+    name: "Blog",
+    matcher: (url: string) => url.startsWith("/blog"),
+  },
+] as const;
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<nav class="flex gap-4 mb-3">
+  {
+    links.map(({ name, matcher }) => (
+      <a
+        href={`/${name.toLowerCase()}`}
+        class:list={[
+          "text-lg text-muted-foreground hover:text-foreground hover:underline",
+          matcher(pathname) ? "text-foreground" : "",
+        ]}
+        aria-current={matcher(pathname) ? "page" : undefined}
+      >
+        {name}
+      </a>
+    ))
+  }
+</nav>
