@@ -32,5 +32,5 @@ module.exports = {
       wave: "wave 1s ease-in-out infinite",
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };

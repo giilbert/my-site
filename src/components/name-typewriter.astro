@@ -1,12 +1,18 @@
 <div class="flex gap-1">
-  <h1 id="name" class="font-medium text-2xl">Gilbert Zhang</h1>
-  <div id="cursor" class="h-[1.8rem] mt-1 w-2.5 bg-white/80 animate-blink">
+  <h1 id="name" class="font-medium text-2xl z-20">Gilbert Zhang</h1>
+  <div id="cursor" class="h-[1.8rem] mt-1 w-2.5 bg-white/80 animate-blink z-20">
+  </div>
+  <div
+    id="bg-background"
+    class="hidden w-[100vw] h-[100vh] bg-background z-10 fixed top-0 left-0 fade-out duration-1000"
+  >
   </div>
 </div>
 
 <script>
   const nameElement = document.getElementById("name")!;
   const cursorElement = document.getElementById("cursor")!;
+  const backgroundElement = document.getElementById("bg-background")!;
 
   function randomRange(min: number, max: number) {
     return Math.random() * (max - min) + min;
@@ -18,8 +24,10 @@
 
   nameElement.innerText = "";
   cursorElement.classList.remove("animate-blink");
+  backgroundElement.classList.remove("hidden");
 
   async function run() {
+    await document.fonts.ready;
     // type "Glibe"
     const textOne = "Glibe";
     for (let i = 0; i < textOne.length; i++) {
@@ -41,6 +49,9 @@
     }
 
     cursorElement.classList.add("animate-blink");
+    backgroundElement.classList.add("animate-out");
+    await sleep(1000);
+    backgroundElement.remove();
   }
 
   run();
