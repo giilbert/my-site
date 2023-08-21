@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --foreground: 210 10% 88%;
+  --foreground: 210 10% 84%;
   --background: 222 64% 5%;
   --muted: 217.2 32.6% 17.5%;
   --muted-foreground: 215 20.2% 65.1%;
