@@ -22,6 +22,10 @@
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  if (process.env.NODE_ENV === "development") {
+    backgroundElement.remove();
+  }
+
   nameElement.innerText = "";
   cursorElement.classList.remove("animate-blink");
   backgroundElement.classList.remove("hidden");

@@ -5,7 +5,7 @@
 :root {
   --foreground: 210 10% 84%;
   --background: 222 64% 5%;
-  --muted: 217.2 32.6% 17.5%;
+  --muted: 218 42.6% 8.5%;
   --muted-foreground: 215 20.2% 65.1%;
 }
 
@@ -16,6 +16,6 @@ body {
 
 @layer base {
   * {
-    @apply border-muted;
+    @apply border-muted transition-colors;
   }
 }

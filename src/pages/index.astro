@@ -1,14 +1,18 @@
 ---
 import PrimaryLayout from "@/layouts/primary-layout.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects")).slice(0, 3);
 ---
 
 <PrimaryLayout>
-  <div class="flex gap-2 my-2">
+  <div class="flex gap-2 mt-12 mb-2">
     <div class="transform origin-bottom-right animate-wave text-2xl w-min">
       👋
     </div>
-    <span class="text-2xl font-medium"> Hey! I&apos;m Gilbert,</span>
+    <span class="text-2xl font-medium">Hey there! I&apos;m Gilbert,</span>
   </div>
+
   <p class="text-lg leading-8">
     a high school student and self-taught software developer. I&apos;m
     interested in <span class="underline underline-offset-4">system design</span
@@ -17,4 +21,43 @@ import PrimaryLayout from "@/layouts/primary-layout.astro";
     >. I love exploring new technologies and building random doodads in my free
     time.
   </p>
+
+  <section class="mt-12 flex flex-col">
+    <h2 class="font-medium">
+      <span class="text-2xl">Click</span>
+      <span class="text-xl">clack</span>
+      <span class="text-lg">clickety</span>
+      <span>clackety</span>
+    </h2>
+    <p class="text-muted-foreground mb-2">What I&apos;ve been working on</p>
+
+    <ul class="my-1">
+      {
+        projects.map(({ data: project, slug }) => (
+          <li class="px-4 -mx-4 py-2 hover:bg-muted mb-1 rounded-md duration-500">
+            <a href={`/projects/${slug}`} class="block">
+              <h3 class="text-lg font-medium">{project.name}</h3>
+              <p class="text-muted-foreground">{project.description}</p>
+              <div class="flex gap-1">
+                {project.technologies.map((name, i) => (
+                  <>
+                    <span class="inline-block text-muted-foreground">
+                      {name}
+                    </span>
+                    {i !== projects.length - 1 && <span>·</span>}
+                  </>
+                ))}
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <a
+      href="/projects"
+      class="ml-auto text-lg text-muted-foreground hover:underline hover:text-foreground"
+      >View all</a
+    >
+  </section>
 </PrimaryLayout>
