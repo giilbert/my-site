@@ -1,5 +1,27 @@
 ---
 import NameTypewriter from "./name-typewriter.astro";
+import Instagram from "./icons/instagram.astro";
+import Linkedin from "./icons/linkedin.astro";
+import GitHub from "./icons/github.astro";
+import Pin from "./icons/pin.astro";
+
+const links = [
+  {
+    href: "https://example.com",
+    tooltip: "GitHub",
+    icon: GitHub,
+  },
+  {
+    href: "https://example.com",
+    tooltip: "LinkedIn",
+    icon: Linkedin,
+  },
+  {
+    href: "https://example.com",
+    tooltip: "Instagram",
+    icon: Instagram,
+  },
+] as const;
 ---
 
 <header class="flex border-b mb-4 pb-4">
@@ -8,12 +30,31 @@ import NameTypewriter from "./name-typewriter.astro";
     <p class="text-muted-foreground">Software Engineer · High School Student</p>
   </div>
 
-  <div class="ml-auto text-muted-foreground">
-    <a
-      href="mailto:mail@example.com"
-      class="underline underline-offset-4"
-      target="_blank"
-      rel="noopener noreferrer">mail@example.com</a
-    >
+  <div class="ml-auto text-muted-foreground flex flex-col items-end gap-2">
+    <div class="flex gap-2">
+      <a
+        href="mailto:mail@example.com"
+        class="underline underline-offset-4"
+        target="_blank"
+        rel="noopener noreferrer">mail@example.com</a
+      >
+
+      {
+        links.map(({ href, tooltip, icon: Icon }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={tooltip}
+            class="underline underline-offset-4"
+          >
+            <Icon size={24} />
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex items-center gap-1">
+      <Pin size={16} /> New York City, USA
+    </div>
   </div>
 </header>
