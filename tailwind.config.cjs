@@ -22,9 +22,14 @@ module.exports = {
         "0%, 100%": { opacity: 1 },
         "50%": { opacity: 0 },
       },
+      wave: {
+        "0%, 100%": { transform: "rotate(0deg)" },
+        "50%": { transform: "rotate(15deg)" },
+      },
     },
     animation: {
       blink: "blink 1s steps(1, end) infinite",
+      wave: "wave 1s ease-in-out infinite",
     },
   },
   plugins: [],

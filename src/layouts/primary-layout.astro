@@ -15,6 +15,14 @@ import Navigation from "@/components/navigation.astro";
     <meta name="description" content={SITE_DESCRIPTION} />
   </head>
   <body class="dark flex justify-center">
+    <script>
+      import flamethrower from "flamethrower-router";
+
+      export const router = flamethrower({
+        pageTransitions: true,
+        prefetch: "visible",
+      });
+    </script>
     <main class="w-[52rem] mx-6 my-10">
       <Header />
       <slot />

@@ -2,14 +2,17 @@
 const links = [
   {
     name: "Home",
+    href: "/",
     matcher: (url: string) => url === "/",
   },
   {
     name: "Projects",
+    href: "/projects",
     matcher: (url: string) => url.startsWith("/projects"),
   },
   {
     name: "Blog",
+    href: "/blog",
     matcher: (url: string) => url.startsWith("/blog"),
   },
 ] as const;
@@ -18,13 +21,14 @@ const pathname = new URL(Astro.request.url).pathname;
 
 <nav class="flex gap-4 mb-3">
   {
-    links.map(({ name, matcher }) => (
+    links.map(({ href, name, matcher }) => (
       <a
-        href={`/${name.toLowerCase()}`}
+        href={href}
         class:list={[
-          "text-lg text-muted-foreground hover:text-foreground hover:underline",
-          matcher(pathname) ? "text-foreground" : "",
+          "text-lg hover:text-foreground hover:underline",
+          matcher(pathname) ? "text-foreground" : "text-muted-foreground",
         ]}
+        rel="preload"
         aria-current={matcher(pathname) ? "page" : undefined}
       >
         {name}

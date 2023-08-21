@@ -1,6 +1,7 @@
 <div class="flex gap-1">
-  <h1 id="name" class="font-medium text-2xl"></h1>
-  <div id="cursor" class="h-[1.8rem] mt-1 w-2.5 bg-white/80"></div>
+  <h1 id="name" class="font-medium text-2xl">Gilbert Zhang</h1>
+  <div id="cursor" class="h-[1.8rem] mt-1 w-2.5 bg-white/80 animate-blink">
+  </div>
 </div>
 
 <script>
@@ -14,6 +15,9 @@
   async function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
+
+  nameElement.innerText = "";
+  cursorElement.classList.remove("animate-blink");
 
   async function run() {
     // type "Glibe"
