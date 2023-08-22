@@ -32,5 +32,6 @@ module.exports = {
       wave: "wave 1s ease-in-out infinite",
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  // TODO: customize the theming
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };

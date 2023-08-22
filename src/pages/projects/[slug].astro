@@ -1,0 +1,40 @@
+---
+import PrimaryLayout from "@/layouts/primary-layout.astro";
+import ProseLayout from "@/layouts/prose-layout.astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+import { Image } from "astro:assets";
+import { ImagePopup } from "@/components/interactive/image-popup";
+
+export async function getStaticPaths() {
+  return (await getCollection("projects")).map((project) => ({
+    params: {
+      slug: project.slug,
+    },
+  }));
+}
+
+const { slug } = Astro.params as { slug: string };
+const projectPost = await getEntryBySlug("projects", slug);
+if (!projectPost) {
+  throw new Error(`Failed to find project with slug: ${slug}`);
+}
+
+const MarkdownContent = (await projectPost.render()).Content;
+---
+
+<PrimaryLayout>
+  <ProseLayout>
+    <MarkdownContent />
+  </ProseLayout>
+
+  <div class="mt-8 flex flex-col gap-4">
+    <h2 class="text-2xl font-medium">Images</h2>
+    {
+      projectPost.data.images.map((src) => (
+        <ImagePopup client:visible>
+          <Image src={src} alt="" class="bg-muted rounded-xl" />
+        </ImagePopup>
+      ))
+    }
+  </div>
+</PrimaryLayout>
