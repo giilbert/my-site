@@ -26,7 +26,7 @@ const links = [
 ---
 
 <header class="mb-8">
-  <div class="flex mb-3">
+  <div class="flex mb-3 flex-col sm:flex-row">
     <div>
       <NameTypewriter />
       <p class="text-muted-foreground">
@@ -34,7 +34,9 @@ const links = [
       </p>
     </div>
 
-    <div class="ml-auto text-muted-foreground flex flex-col items-end gap-2">
+    <div
+      class="w-min mt-4 sm:my-0 sm:ml-auto text-muted-foreground flex flex-col sm:items-end gap-2"
+    >
       <div class="flex gap-2">
         <a
           href="mailto:mail@example.com"
