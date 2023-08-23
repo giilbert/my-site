@@ -1,7 +1,37 @@
 ---
 import PrimaryLayout from "@/layouts/primary-layout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
 ---
 
 <PrimaryLayout>
   <h2 class="text-2xl font-medium">Projects</h2>
+  <div class="mt-2 flex flex-col gap-2 md:gap-10 md:grid grid-cols-2">
+    {
+      projects.map(({ data: project, slug }) => (
+        <div class="p-4 -mx-4 hover:bg-muted mb-1 rounded-md duration-500">
+          <a href={`/projects/${slug}`} class="block">
+            <Image
+              src={project.images[0]}
+              alt="Image of project"
+              class="rounded-md mb-2"
+            />
+
+            <h3 class="text-lg font-medium">{project.name}</h3>
+            <p class="text-muted-foreground">{project.description}</p>
+            <div class="flex gap-1">
+              {project.technologies.map((name, i) => (
+                <>
+                  <span class="inline-block text-muted-foreground">{name}</span>
+                  {i !== project.technologies.length - 1 && <span>·</span>}
+                </>
+              ))}
+            </div>
+          </a>
+        </div>
+      ))
+    }
+  </div>
 </PrimaryLayout>
