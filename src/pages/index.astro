@@ -44,7 +44,7 @@ const projects = (await getCollection("projects")).slice(0, 3);
                     <span class="inline-block text-muted-foreground">
                       {name}
                     </span>
-                    {i !== projects.length - 1 && <span>·</span>}
+                    {i !== project.technologies.length - 1 && <span>·</span>}
                   </>
                 ))}
               </div>
