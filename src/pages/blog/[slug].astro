@@ -1,0 +1,29 @@
+---
+import PrimaryLayout from "@/layouts/primary-layout.astro";
+import ProseLayout from "@/layouts/prose-layout.astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+import { Image } from "astro:assets";
+import { ImagePopup } from "@/components/interactive/image-popup";
+
+export async function getStaticPaths() {
+  return (await getCollection("blog")).map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+  }));
+}
+
+const { slug } = Astro.params as { slug: string };
+const blogPost = await getEntryBySlug("blog", slug);
+if (!blogPost) {
+  throw new Error(`Failed to find blog post with slug: ${slug}`);
+}
+
+const MarkdownContent = (await blogPost.render()).Content;
+---
+
+<PrimaryLayout>
+  <ProseLayout>
+    <MarkdownContent />
+  </ProseLayout>
+</PrimaryLayout>
